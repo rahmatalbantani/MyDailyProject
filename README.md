@@ -1,1 +1,1 @@
-# MyDailyProject
+# Plagiarism Checker
