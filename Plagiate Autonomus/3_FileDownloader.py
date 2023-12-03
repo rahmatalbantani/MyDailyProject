@@ -2,6 +2,7 @@ import os
 from typing import List
 import pandas as pd
 from gdown import download
+from tqdm import tqdm
 
 def google_drive_bulk_download(input_excel_file_name: str = "Data/ExcelPart/input.xlsx", output_directory_name: str = "Data/LaporanDownload") -> List[str]:
     messages = []  # List to store informational messages
@@ -16,6 +17,11 @@ def google_drive_bulk_download(input_excel_file_name: str = "Data/ExcelPart/inpu
         messages.append(f"\n!!! The File '{input_excel_file_path}' is Invalid!\n")
         return messages
 
+    df.columns = df.columns.str.strip()
+    if 'Nama' not in df.columns or 'Link' not in df.columns:
+        messages.append("!!! 'Nama' or 'Link' columns not found in the DataFrame.")
+        return messages
+
     try:
         os.makedirs(output_directory_path, exist_ok=True)
         os.chdir(output_directory_path)
@@ -26,7 +32,7 @@ def google_drive_bulk_download(input_excel_file_name: str = "Data/ExcelPart/inpu
     file_lines_count = len(df)
     messages.append('\n\n==> Started Downloading!\n')
 
-    for i, row in df.iterrows():
+    for i, row in tqdm(df.iterrows(), total=file_lines_count, desc="Downloading"):
         nama = row['Nama']
         download_url = row['Link']
 
@@ -34,10 +40,9 @@ def google_drive_bulk_download(input_excel_file_name: str = "Data/ExcelPart/inpu
 
         try:
             download(url=download_url, quiet=False, fuzzy=True)
+            messages.append('Finished!')
         except Exception as e:
             messages.append(f"!!! Error downloading {nama}: {str(e)}")
-
-        messages.append('Finished!')
 
     messages.append('\n\n==> Finished Downloading!')
     return messages

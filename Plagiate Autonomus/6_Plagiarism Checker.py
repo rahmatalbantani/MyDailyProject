@@ -187,23 +187,18 @@ def find_plagiarism(folder_path, threshold=0.63, min_word_limit=5):
     return results
 
 
-def choose_folder(title="Select Folder"):
-    root = tk.Tk()
-    root.withdraw()
 
-    folder_path = filedialog.askdirectory(title=title)
-    return folder_path
 
 
 # Example usage
 current_directory = os.path.dirname(os.path.abspath(__file__))
 input_folder = os.path.join(current_directory, "Data/LaporanDownload")
-
+PathCopas = os.path.join(current_directory, "Data/LaporanDownload")
 if input_folder:
     plagiarism_results = find_plagiarism(input_folder, min_word_limit=5)
 
     if plagiarism_results:
-        output_folder = choose_folder(title="Pilih Folder Output Plagiarism Report")
+        output_folder = os.path.join(current_directory, "Data/OutputPlagiate")
 
         if output_folder:
             html_report = generate_html_report(plagiarism_results)
