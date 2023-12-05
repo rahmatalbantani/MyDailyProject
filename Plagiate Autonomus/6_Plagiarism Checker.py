@@ -81,7 +81,7 @@ def generate_html_report(results):
         file1_name, file2_name, similarity, _, _ = result
         anchor = f'similarity_{file1_name}_{file2_name}'
         # Hanya tambahkan hasil yang di atas threshold
-        if similarity > 0.63:  # Ganti threshold sesuai kebutuhan
+        if similarity > 0.5:  # Ganti threshold sesuai kebutuhan
             html_content += f"<li><a href='#{anchor}'>Similarity between {file1_name} and {file2_name}</a></li>"
     html_content += "</ul>"
 
@@ -94,7 +94,7 @@ def generate_html_report(results):
 
     for result in results:
         file1_name, file2_name, similarity, _, _ = result
-        if similarity > 0.63:  # Ganti threshold sesuai kebutuhan
+        if similarity > 0.5:  # Ganti threshold sesuai kebutuhan
             # Tambahkan ke set hanya jika belum ada
             if file1_name not in unique_indicated_files:
                 html_content += f"<li>{file1_name}</li>"
@@ -110,7 +110,7 @@ def generate_html_report(results):
         # Tambahkan anchor untuk navigasi
         anchor = f'similarity_{file1_name}_{file2_name}'
         # Hanya tambahkan hasil yang di atas threshold
-        if similarity > 0.63:  # Ganti threshold sesuai kebutuhan
+        if similarity > 0.5:  # Ganti threshold sesuai kebutuhan
             html_content += f"<a name='{anchor}'></a>"
 
             html_content += f"<div style='border: 1px solid #ccc; padding: 10px; margin-bottom: 20px;'>"
@@ -147,7 +147,7 @@ def highlight_plagiarism(text, reference_text):
     return highlighted_text
 
 
-def find_plagiarism(folder_path, threshold=0.63, min_word_limit=5):
+def find_plagiarism(folder_path, threshold=0.5, min_word_limit=5):
     file_list = [f for f in os.listdir(folder_path) if f.endswith('.pdf') or f.endswith('.docx')]
 
     results = []

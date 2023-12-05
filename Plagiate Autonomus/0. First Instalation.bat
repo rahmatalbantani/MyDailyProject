@@ -14,3 +14,4 @@ pip install types-tabulate
 pip install pandas
 pip install openpyxl
 pip install slate3k
+python CopytoSlate3k.py
