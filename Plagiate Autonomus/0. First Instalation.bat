@@ -5,6 +5,8 @@ pip install tk
 pip install PyMuPDF
 pip install python-docx 
 pip install odfpy
+pip install nltk
+pip install pdfplumber
 pip install tqdm
 pip install docx2pdf
 pip install pylint==3.0.2
