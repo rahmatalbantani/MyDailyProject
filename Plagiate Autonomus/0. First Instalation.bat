@@ -3,7 +3,8 @@ pip install typing
 pip install os
 pip install tk
 pip install PyMuPDF
-pip install docx
+pip install python-docx 
+pip install odfpy
 pip install tqdm
 pip install docx2pdf
 pip install pylint==3.0.2
