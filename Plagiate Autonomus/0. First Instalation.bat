@@ -17,5 +17,10 @@ pip install types-tabulate
 pip install tabulate
 pip install pandas
 pip install openpyxl
+pip uninstall pdfminer
+pip uninstall pdfminer.six
+pip uninstall pdfminer3k
+pip install pdfminer3k
+pip install pdfminer.six
 pip install slate3k
 python CopytoSlate3k.py

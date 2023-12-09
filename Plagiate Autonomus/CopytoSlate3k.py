@@ -27,7 +27,7 @@ if __name__ == "__main__":
     source_file_path = os.path.join(current_directory,'classes.py')
     path1 = r"C:\Users"
     path2 = os.getlogin()
-    path3 = r"AppData\Local\Programs\Python\Python310\Lib\site-packages\slate3k"
+    path3 = r"AppData\Local\Programs\Python\Python312\Lib\site-packages\slate3k"
     pathfinal = os.path.join(path1,path2,path3)
 
     # Ganti direktori tujuan sesuai dengan kebutuhan Anda
